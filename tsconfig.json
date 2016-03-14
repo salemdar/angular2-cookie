@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "outDir": "dist/",
+    "rootDir": ".",
+    "sourceMap": true,
+    "removeComments": false
+  },
+  "exclude": [
+    "node_modules",
+    "gulp",
+    "dist",
+    "assets"
+  ]
+}
