@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 node_js:
-- '5.0.0'
+- '5.6.0'
 
 env:
   global:
@@ -11,14 +11,6 @@ env:
 #cache:
 #  directories:
 #    - node_modules
-
-notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/51f75e331838d36801f2
-    on_success: change
-    on_failure: always
-    on_start: never
 
 addons:
   firefox: '38.0'

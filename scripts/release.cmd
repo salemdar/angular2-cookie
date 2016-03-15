@@ -2,7 +2,7 @@
 ::  - bump the package.json version
 ::  - generate the project with gulp build (dist folder should lookin good)
 ::  - Create Git tag
-::./node_modules/.bin/gulp changelog
+./node_modules/.bin/gulp changelog
 git.exe add * -A
 git.exe commit -m "chore(release): add changelog and bump version"
 git.exe push origin master
