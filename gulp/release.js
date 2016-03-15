@@ -5,6 +5,7 @@ const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
 const config = require('./config');
 const fs = require('fs');
+const path = require('path');
 
 gulp.task('copy-release-assets', function copyReleaseAssets() {
   return gulp.src(config.PATHS.releaseAssets)
@@ -19,6 +20,19 @@ gulp.task('changelog', function changelog() {
     preset: 'angular',
   }))
   .pipe(gulp.dest('.'));
+});
+
+gulp.task('createPackageJson', function createPackageJson() {
+  const basePkgJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+
+  // remove scripts
+  delete basePkgJson.scripts;
+
+  // remove devDependencies (as there are important for the sourcecode only)
+  delete basePkgJson.devDependencies;
+
+  const filepath = path.join(__dirname, '../dist/package.json');
+  fs.writeFileSync(filepath, JSON.stringify(basePkgJson, null, 2), 'utf-8');
 });
 
 gulp.task('create-tag', function createTag(cb) {

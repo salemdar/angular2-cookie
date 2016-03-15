@@ -10,11 +10,18 @@ export class CookieService {
     return value ? Json.parse(value) : value;
   }
 
+  getAll(): any { return <any>this._cookieReader(); }
+
   put(key: string, value: string, options?: any) { this._cookieWriter()(key, value); }
 
   putObject(key: string, value: Object, options?: any) { this.put(key, Json.stringify(value)); }
 
-  remove(key: string) { this._cookieWriter()(key, undefined); }
+  remove(key: string): void { this._cookieWriter()(key, undefined); }
+
+  removeAll(): void {
+    let cookies = this.getAll();
+    Object.keys(cookies).forEach(key => { this.remove(key); });
+  }
 
   private _cookieReader(): Object {
     let rawDocument = document;
