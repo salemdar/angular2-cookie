@@ -13,7 +13,3 @@ gulp.task('test', function testTask(done) {
 });
 
 gulp.task('test:watch', ['scripts:test', 'watch:testfiles', 'watch:srcFiles', 'karma:watch']);
-
-gulp.task('default', function buildAndTest(done) {
-  runSequence('build', 'test', done);
-});

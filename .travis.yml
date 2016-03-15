@@ -1,0 +1,40 @@
+language: node_js
+sudo: false
+node_js:
+- '5.0.0'
+
+env:
+  global:
+    # NPM_TOKEN (used for npm publish)
+    secure: UcqOHJVCBRFLn74XnMENn72cx8N3KXZX5bgx3LNOex0gQkGtm7EJiI0qhA+NsgT27iJ9b1gwEFA1aAdlZxvoF7Cko03VICVuhfPQMFXISGML9e9aydd1saZTjBh7RA5cBISwhuXyGJWjiRf5uYnA+rMWH7VfljNeoDFTZbpHTz86V4D0YlMtDJcd4556TP4v5XHCKKKGwmlpFMRwN9m6n+RNq1V58t8lWpDXSh1KfLBVq5rnWqDxyxTx8jCxzWxORm0ioS3cZOyM+oWwwfITRXCOP84Aad1//77sJDw+YC7qG1CI2CaHl84K/Rmx0GfkN1G5g4y6p1JC1e+I0zwFkcZ/iHn2a01LPWjduuVvAGTcPgC6+KclXvHDLKAS0rF6tlhlPupxZX2WPlbX+zEfcTxFJqmgxLIiGbJ2ZFVAtTEbs572nAFhYPXCn6flXn4/OT/bdq7hD1iLpbdoItIG+WeLneZBYrO5LtQ0dP1zQXt+c29ltxOQNP5uac8OmE72X9IhDO87hi/XEjAWtuBXmww1ZtNPYiHT3Ajl45JqXPbs68HboQmiT4AnkpkGx9kj+/EGITW5g20zhp8cZb9vfd3Q19dVmO43AWB0YwLzPSg8gVoajDYeveW5pDLSibbRhNuKpkD3z2kulIKhxZFRzvrAOEPzYGoveZWG8Wtt7zc=
+
+#cache:
+#  directories:
+#    - node_modules
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/51f75e331838d36801f2
+    on_success: change
+    on_failure: always
+    on_start: never
+
+addons:
+  firefox: '38.0'
+
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+install:
+  - npm install
+  - ./node_modules/.bin/typings install
+
+script:
+  - node_modules/.bin/gulp build
+  - node_modules/.bin/gulp test
+
+#after_success:
+#  - ./scripts/npm-publish.sh
