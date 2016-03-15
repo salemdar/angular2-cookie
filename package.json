@@ -1,6 +1,6 @@
 {
   "name": "angular2-cookies",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "Implementation of Angular 1.x $cookies to Angular 2",
   "main": "index.js",
   "typings": "./index.d.ts",
