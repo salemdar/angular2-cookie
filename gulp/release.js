@@ -6,9 +6,6 @@ const $ = require('gulp-load-plugins')();
 const config = require('./config');
 const fs = require('fs');
 const path = require('path');
-const argv = require('yargs').argv;
-const _ = require('lodash');
-const runSequence = require('run-sequence');
 
 gulp.task('copy-release-assets', function copyReleaseAssets() {
   return gulp.src(config.PATHS.releaseAssets)
