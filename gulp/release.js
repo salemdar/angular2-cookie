@@ -20,7 +20,7 @@ gulp.task('readme', ['clean:readme'], () => {
     pkg: basePkgJson,
   }))
   .pipe($.rename('README.md'))
-  .pipe(gulp.dest('./assets/release/'))
+  .pipe(gulp.dest(config.PATHS.dist.base))
   .pipe(gulp.dest('./'));
 });
 
