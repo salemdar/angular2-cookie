@@ -16,13 +16,14 @@ const bundleConfig = {
 
 function bundle(moduleName, moduleBundleName, minify, done) {
   const outputConfig = {
-    sourceMaps: true,
-    minify: minify,
+    sourceMaps: true, minify,
   };
   const builder = new Builder();
   builder.config(bundleConfig);
-  const outputFile = path.join(config.PATHS.dist.bundles, moduleBundleName + (minify ? '.min' : '') + '.js');
-  const bundlePromise = builder.bundle(moduleName + ' - angular2/* - rxjs/*', outputFile, outputConfig);
+  const outputFile =
+    path.join(config.PATHS.dist.bundles, `${moduleBundleName}${(minify ? '.min' : '')}.js`);
+  const bundlePromise =
+    builder.bundle(`${moduleName} - angular2/* - rxjs/*`, outputFile, outputConfig);
 
   if (!minify) {
     bundlePromise.then(() => {
@@ -35,11 +36,11 @@ function bundle(moduleName, moduleBundleName, minify, done) {
   });
 }
 
-gulp.task('bundle:cjs', ['scripts:cjs'], function bundleCjs(done) {
+gulp.task('bundle:cjs', ['scripts:cjs'], (done) => {
   bundle('angular2-cookies/core', 'angular2-cookies', false, done);
 });
 
-gulp.task('bundle:cjs:min', ['scripts:cjs'], function bundleCjsMin(done) {
+gulp.task('bundle:cjs:min', ['scripts:cjs'], (done) => {
   bundle('angular2-cookies/core', 'angular2-cookies', true, done);
 });
 

@@ -12,13 +12,13 @@ const banner = ['/**',
   ' */',
   ''].join('\n');
 
-gulp.task('scripts:ts', function scriptsTs() {
-  return gulp.src(config.PATHS.tsSrcFiles)
-  .pipe($.header(banner, {pkg: config.pkg}))
-  .pipe(gulp.dest(config.PATHS.dist.ts));
-});
+gulp.task('scripts:ts', () =>
+  gulp.src(config.PATHS.tsSrcFiles)
+  .pipe($.header(banner, { pkg: config.pkg }))
+  .pipe(gulp.dest(config.PATHS.dist.ts))
+);
 
-gulp.task('scripts:es6', function scriptsEs6() {
+gulp.task('scripts:es6', () => {
   const taskConfig = $.typescript.createProject(config.PATHS.tsConfig, {
     module: 'ES6',
     target: 'ES6',
@@ -32,44 +32,48 @@ gulp.task('scripts:es6', function scriptsEs6() {
   .pipe(sourcemaps.init())
   .pipe($.typescript(taskConfig, undefined, $.typescript.reporter.nullReporter()));
   return tsResult.js.pipe(sourcemaps.write('.'))
-  .pipe($.header(banner, {pkg: config.pkg}))
+  .pipe($.header(banner, { pkg: config.pkg }))
   .pipe(gulp.dest(config.PATHS.dist.es6));
 });
 
 // we create the the tsConfig outside the task for fast incremental compilations during a watch.
 const taskConfigCjs = $.typescript.createProject(config.PATHS.tsConfig, {
   target: 'ES5',
-  'module': 'commonjs',
+  module: 'commonjs',
   moduleResolution: 'node',
   declaration: true,
   emitDecoratorMetadata: true,
   experimentalDecorators: true,
 });
 
-gulp.task('scripts:cjs', function scriptsEs5() {
+gulp.task('scripts:cjs', () => {
   const tsResult = gulp.src([config.PATHS.tsSrcFiles, 'typings/main.d.ts'])
   .pipe(sourcemaps.init())
   .pipe($.typescript(taskConfigCjs));
 
   return merge([
-    tsResult.dts.pipe($.header(banner, {pkg: config.pkg})).pipe(gulp.dest(config.PATHS.dist.cjs)),
-    tsResult.js.pipe($.header(banner, {pkg: config.pkg})).pipe(sourcemaps.write('.')).pipe(gulp.dest(config.PATHS.dist.cjs)),
+    tsResult.dts.pipe($.header(banner, { pkg: config.pkg }))
+    .pipe(gulp.dest(config.PATHS.dist.cjs)),
+    tsResult.js.pipe($.header(banner, { pkg: config.pkg }))
+    .pipe(sourcemaps.write('.')).pipe(gulp.dest(config.PATHS.dist.cjs)),
   ]);
 });
 
-gulp.task('scripts:test', function scriptsEs5() {
+gulp.task('scripts:test', () => {
   const tsResult = gulp.src(config.PATHS.tsTestFiles)
   .pipe(sourcemaps.init())
   .pipe($.typescript(taskConfigCjs));
 
   // todo: figure out why gulp-typescript don't write to the defined root dir (test-built)
   function replaceTestDir(path) {
+    /*eslint-disable */
     path.dirname = path.dirname.replace('test/', '');
+    /*eslint-enable */
   }
 
   return merge([
     tsResult.dts
-    .pipe($.header(banner, {pkg: config.pkg}))
+    .pipe($.header(banner, { pkg: config.pkg }))
     .pipe($.rename(replaceTestDir))
     .pipe(gulp.dest(config.PATHS.testBuilt)),
     tsResult.js
