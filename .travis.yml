@@ -30,5 +30,5 @@ script:
   - node_modules/.bin/gulp build
   - node_modules/.bin/gulp test
 
-#after_success:
-#  - ./scripts/npm-publish.sh
+after_success:
+  - ./scripts/npm-publish.sh
