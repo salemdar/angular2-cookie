@@ -12,6 +12,7 @@ module.exports.PATHS = {
     'typings/main.d.ts',
   ],
   releaseAssets: ['assets/release/**/*', 'LICENSE'],
+  generatedDocsDir: 'docs',
   exampleFiles: 'examples/**/*',
   jsFiles: ['gulpfile.js', 'gulp/*.js'],
   tsConfig: path.join(__dirname, '../tsconfig.json'),

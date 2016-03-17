@@ -1,7 +1,7 @@
 {
   "name": "angular2-cookies",
-  "version": "0.1.5",
-  "description": "Implementation of Angular 1.x $cookies to Angular 2",
+  "version": "1.0.0",
+  "description": "Implementation of Angular 1.x $cookies service to Angular 2",
   "main": "index.js",
   "typings": "./index.d.ts",
   "repository": {
@@ -36,7 +36,7 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
-    "babel-eslint": "4.1.8",
+    "babel-eslint": "^5.0.0",
     "clang-format": "^1.0.35",
     "del": "2.2.0",
     "eslint": "2.3.0",
@@ -45,28 +45,29 @@
     "gulp": "3.9.1",
     "gulp-bump": "1.0.0",
     "gulp-clang-format": "1.0.23",
-    "gulp-connect": "3.0.0",
-    "gulp-conventional-changelog": "1.0.1",
+    "gulp-connect": "^3.1.0",
+    "gulp-conventional-changelog": "^1.1.0",
     "gulp-eslint": "1.1.1",
     "gulp-git": "1.7.0",
     "gulp-header": "^1.7.1",
-    "gulp-load-plugins": "1.1.0",
+    "gulp-load-plugins": "^1.2.0",
     "gulp-rename": "1.2.2",
     "gulp-sourcemaps": "1.6.0",
+    "gulp-template": "^3.1.0",
     "gulp-tslint": "4.3.3",
     "gulp-typescript": "2.12.1",
     "jasmine-core": "2.4.1",
     "karma": "0.13.22",
     "karma-chrome-launcher": "0.2.2",
-    "karma-jasmine": "0.3.6",
+    "karma-jasmine": "^0.3.8",
     "merge2": "1.0.1",
     "replace": "0.3.0",
     "require-dir": "0.3.0",
     "run-sequence": "1.1.5",
     "systemjs": "0.19.24",
-    "systemjs-builder": "0.14.11",
-    "tslint": "3.5.0",
-    "typescript": "1.8.7",
-    "typings": "0.7.8"
+    "systemjs-builder": "^0.14.11",
+    "tslint": "3.6.0",
+    "typescript": "^1.8.9",
+    "typings": "0.7.9"
   }
 }

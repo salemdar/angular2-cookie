@@ -1,23 +1,95 @@
-import {Injectable} from 'angular2/core';
+import {Injectable, Optional} from 'angular2/core';
 import {Json, isPresent, isBlank, isString} from 'angular2/src/facade/lang';
+import {CookieOptions} from './base-cookie-options';
+import {BaseCookieOptions} from './base-cookie-options';
+import {CookieOptionsArgs} from './cookie-options-args.model';
 
 @Injectable()
 export class CookieService {
+  constructor(@Optional() private _defaultOptions: CookieOptions) {}
+
+  /**
+   * @name cookieService#get
+   *
+   * @description
+   * Returns the value of given cookie key.
+   *
+   * @param {string} key Id to use for lookup.
+   * @returns {string} Raw cookie value.
+   */
   get(key: string): string { return (<any>this._cookieReader())[key]; }
 
-  getObject(key: string): any {
+  /**
+   * @name cookieService#getObject
+   *
+   * @description
+   * Returns the deserialized value of given cookie key.
+   *
+   * @param {string} key Id to use for lookup.
+   * @returns {Object} Deserialized cookie value.
+   */
+  getObject(key: string): Object {
     let value = this.get(key);
     return value ? Json.parse(value) : value;
   }
 
-  getAll(): any { return <any>this._cookieReader(); }
+  /**
+   * @name cookieService#getAll
+   *
+   * @description
+   * Returns a key value object with all the cookies.
+   *
+   * @returns {Object} All cookies
+   */
+  getAll(): Object { return <any>this._cookieReader(); }
 
-  put(key: string, value: string, options?: any) { this._cookieWriter()(key, value); }
+  /**
+   * @name cookieService#put
+   *
+   * @description
+   * Sets a value for given cookie key.
+   *
+   * @param {string} key Id for the `value`.
+   * @param {string} value Raw value to be stored.
+   * @param {CookieOptionsArgs} options (Optional) Options object.
+   */
+  put(key: string, value: string, options?: CookieOptionsArgs) {
+    this._cookieWriter()(key, value, options);
+  }
 
-  putObject(key: string, value: Object, options?: any) { this.put(key, Json.stringify(value)); }
+  /**
+   * @name cookieService#putObject
+   *
+   * @description
+   * Serializes and sets a value for given cookie key.
+   *
+   * @param {string} key Id for the `value`.
+   * @param {Object} value Value to be stored.
+   * @param {CookieOptionsArgs} options (Optional) Options object.
+   */
+  putObject(key: string, value: Object, options?: CookieOptionsArgs) {
+    this.put(key, Json.stringify(value), options);
+  }
 
-  remove(key: string): void { this._cookieWriter()(key, undefined); }
+  /**
+   * @name cookieService#remove
+   *
+   * @description
+   * Remove given cookie.
+   *
+   * @param {string} key Id of the key-value pair to delete.
+   * @param {CookieOptionsArgs} options (Optional) Options object.
+   */
+  remove(key: string, options?: CookieOptionsArgs): void {
+    this._cookieWriter()(key, undefined, options);
+  }
 
+  /**
+   * @name cookieService#removeAll
+   *
+   * @description
+   * Remove all cookies.
+   */
   removeAll(): void {
     let cookies = this.getAll();
     Object.keys(cookies).forEach(key => { this.remove(key); });
@@ -57,7 +129,7 @@ export class CookieService {
     let that = this;
     var rawDocument = document;
 
-    return function(name: string, value: string, options?: any) {
+    return function(name: string, value: string, options?: CookieOptionsArgs) {
       rawDocument.cookie = that._buildCookieString(name, value, options);
     };
   }
@@ -70,12 +142,13 @@ export class CookieService {
     }
   }
 
-  private _buildCookieString(name: string, value: string, options?: any): string {
+  private _buildCookieString(name: string, value: string, options?: CookieOptionsArgs): string {
     var cookiePath = '/';
     var path: string, expires: any;
-    options = options || {};
-    expires = options.expires;
-    path = isPresent(options.path) ? options.path : cookiePath;
+    var defaultOpts =
+        this._defaultOptions || new CookieOptions(<CookieOptionsArgs>{path: cookiePath});
+    var opts: CookieOptions = this._mergeOptions(defaultOpts, options);
+    expires = opts.expires;
     if (isBlank(value)) {
       expires = 'Thu, 01 Jan 1970 00:00:00 GMT';
       value = '';
@@ -85,10 +158,10 @@ export class CookieService {
     }
 
     var str = encodeURIComponent(name) + '=' + encodeURIComponent(value);
-    str += path ? ';path=' + path : '';
-    str += options.domain ? ';domain=' + options.domain : '';
+    str += opts.path ? ';path=' + opts.path : '';
+    str += opts.domain ? ';domain=' + opts.domain : '';
     str += expires ? ';expires=' + expires.toUTCString() : '';
-    str += options.secure ? ';secure' : '';
+    str += opts.secure ? ';secure' : '';
 
     // per http://www.ietf.org/rfc/rfc2109.txt browser must allow at minimum:
     // - 300 cookies
@@ -101,5 +174,14 @@ export class CookieService {
     }
 
     return str;
+  }
+
+  private _mergeOptions(defaultOpts: BaseCookieOptions, providedOpts?: CookieOptionsArgs):
+      CookieOptions {
+    let newOpts = defaultOpts;
+    if (isPresent(providedOpts)) {
+      return newOpts.merge(new CookieOptions(providedOpts));
+    }
+    return newOpts;
   }
 }

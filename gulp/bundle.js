@@ -27,7 +27,7 @@ function bundle(moduleName, moduleBundleName, minify, done) {
   if (!minify) {
     bundlePromise.then(() => {
       gulp.src(outputFile)
-          .pipe($.connect.reload());
+      .pipe($.connect.reload());
     });
   }
   return bundlePromise.then(() => {

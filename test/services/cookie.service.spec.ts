@@ -10,12 +10,19 @@ import {
   afterEach
 } from 'angular2/testing';
 import {Json} from 'angular2/src/facade/lang';
+import {ANGULAR2_COOKIES_PROVIDERS} from '../../src/core';
 
 export function main() {
   describe('CookieService', () => {
-    beforeEachProviders(() => [CookieService]);
+    beforeEachProviders(() => [ANGULAR2_COOKIES_PROVIDERS, CookieService]);
     beforeEach(
         inject([CookieService], (cookieService: CookieService) => { cookieService.removeAll(); }));
+
+    it('should return undefined a non-existent cookie',
+       inject([CookieService], (cookieService: CookieService) => {
+         let key = 'nonExistentCookieKey';
+         expect(cookieService.get(key)).toBeUndefined();
+       }));
 
     it('should set and get a simple cookie',
        inject([CookieService], (cookieService: CookieService) => {

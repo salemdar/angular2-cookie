@@ -9,3 +9,7 @@ gulp.task('clean:dist', function cleanDist(done) {
 gulp.task('clean:test', function cleanTest(done) {
   return del([config.PATHS.testBuilt], done);
 });
+
+gulp.task('clean:readme', function cleanReadme(done) {
+  return del(['./README.md'], done);
+});

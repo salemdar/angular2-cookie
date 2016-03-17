@@ -7,9 +7,20 @@ const config = require('./config');
 const fs = require('fs');
 const path = require('path');
 
+
 gulp.task('copy-release-assets', function copyReleaseAssets() {
   return gulp.src(config.PATHS.releaseAssets)
   .pipe(gulp.dest(config.PATHS.dist.base));
+});
+
+gulp.task('readme', ['clean:readme'], function renderReadme() {
+  const basePkgJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+  return gulp.src('./assets/readme.tmpl.md')
+  .pipe($.template({
+    pkg: basePkgJson,
+  }))
+  .pipe($.rename('README.md'))
+  .pipe(gulp.dest('./'));
 });
 
 gulp.task('changelog', function changelog() {
