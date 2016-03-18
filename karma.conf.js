@@ -1,3 +1,4 @@
+/*eslint-disable */
 module.exports = function(config) {
   var configuration = {
     basePath: '',
@@ -57,3 +58,5 @@ module.exports = function(config) {
   }
   config.set(configuration);
 };
+
+/*eslint-enable */
