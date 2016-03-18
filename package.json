@@ -1,6 +1,6 @@
 {
-  "name": "angular2-cookies",
-  "version": "0.9.0",
+  "name": "angular2-cookie2",
+  "version": "0.9.1",
   "description": "Implementation of Angular 1.x $cookies service to Angular 2",
   "repository": {
     "type": "git",
