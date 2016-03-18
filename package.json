@@ -1,10 +1,10 @@
 {
   "name": "angular2-cookie2",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Implementation of Angular 1.x $cookies service to Angular 2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/salemdar/angular2-cookies.git"
+    "url": "git+https://github.com/salemdar/angular2-cookie.git"
   },
   "keywords": [
     "angular2",
@@ -16,9 +16,9 @@
   "author": "Samet Alemdar <sa.alemdar@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/salemdar/angular2-cookies/issues"
+    "url": "https://github.com/salemdar/angular2-cookie/issues"
   },
-  "homepage": "https://github.com/salemdar/angular2-cookies#readme",
+  "homepage": "https://github.com/salemdar/angular2-cookie#readme",
   "engines": {
     "node": ">=5.0.0"
   },
