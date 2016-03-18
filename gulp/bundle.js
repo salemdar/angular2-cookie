@@ -8,7 +8,7 @@ const bundleConfig = {
   baseURL: config.PATHS.dist.cjs,
   defaultJSExtensions: true,
   paths: {
-    'angular2-cookies/*': '*',
+    'angular2-cookie/*': '*',
     'angular2/*': './node_modules/angular2/*',
     'rxjs/*': './node_modules/rxjs/*',
   },
@@ -37,11 +37,11 @@ function bundle(moduleName, moduleBundleName, minify, done) {
 }
 
 gulp.task('bundle:cjs', ['scripts:cjs'], (done) => {
-  bundle('angular2-cookies/core', 'angular2-cookies', false, done);
+  bundle('angular2-cookie/core', 'angular2-cookie', false, done);
 });
 
 gulp.task('bundle:cjs:min', ['scripts:cjs'], (done) => {
-  bundle('angular2-cookies/core', 'angular2-cookies', true, done);
+  bundle('angular2-cookie/core', 'angular2-cookie', true, done);
 });
 
 gulp.task('bundle', ['bundle:cjs', 'bundle:cjs:min']);

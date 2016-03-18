@@ -10,11 +10,11 @@ import {
   afterEach
 } from 'angular2/testing';
 import {Json} from 'angular2/src/facade/lang';
-import {ANGULAR2_COOKIES_PROVIDERS} from '../../src/core';
+import {ANGULAR2_COOKIE_PROVIDERS} from '../../src/core';
 
 export function main() {
   describe('CookieService', () => {
-    beforeEachProviders(() => [ANGULAR2_COOKIES_PROVIDERS, CookieService]);
+    beforeEachProviders(() => [ANGULAR2_COOKIE_PROVIDERS, CookieService]);
     beforeEach(
         inject([CookieService], (cookieService: CookieService) => { cookieService.removeAll(); }));
 

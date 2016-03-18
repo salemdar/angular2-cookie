@@ -1,8 +1,6 @@
 import {isPresent} from 'angular2/src/facade/lang';
 import {CookieOptionsArgs} from './cookie-options-args.model';
 import {Injectable} from 'angular2/core';
-import {PathLocationStrategy} from 'angular2/router';
-import {Injector} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 
 /** @private */
