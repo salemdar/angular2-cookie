@@ -1,6 +1,6 @@
-# angular2-cookie2  [![Build Status](https://travis-ci.org/salemdar/angular2-cookies.svg?branch=0.9.2)](https://travis-ci.org/salemdar/angular2-cookies) [![npm version](https://badge.fury.io/js/angular2-cookies.svg)](http://badge.fury.io/js/angular2-cookies) [![Downloads](http://img.shields.io/npm/dm/angular2-cookies.svg)](https://npmjs.org/package/angular2-cookies)
+# angular2-cookie  [![Build Status](https://travis-ci.org/salemdar/angular2-cookies.svg?branch=0.9.5)](https://travis-ci.org/salemdar/angular2-cookies) [![npm version](https://badge.fury.io/js/angular2-cookies.svg)](http://badge.fury.io/js/angular2-cookies) [![Downloads](http://img.shields.io/npm/dm/angular2-cookies.svg)](https://npmjs.org/package/angular2-cookies)
 
-> Implementation of Angular 1.x $cookies service to Angular 2 **v0.9.2**
+> Implementation of Angular 1.x $cookies service to Angular 2 **v0.9.5**
 
 ## Table of contents:
 - [Get Started](#get-started)
