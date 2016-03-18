@@ -7,9 +7,10 @@ gulp.task('build', (done) => {
     'clean:dist',
     'clang:format',
     ['readme',
-      'copy-release-assets',
+      'readme:dist',
       'scripts',
       'bundle'],
+    'copy-release-assets',
     'createPackageJson',
     done);
 });

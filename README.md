@@ -1,4 +1,4 @@
-# angular2-cookie  [![Build Status](https://travis-ci.org/salemdar/angular2-cookies.svg?branch=0.9.5)](https://travis-ci.org/salemdar/angular2-cookies) [![npm version](https://badge.fury.io/js/angular2-cookies.svg)](http://badge.fury.io/js/angular2-cookies) [![Downloads](http://img.shields.io/npm/dm/angular2-cookies.svg)](https://npmjs.org/package/angular2-cookies)
+# angular2-cookie  [![Build Status](https://travis-ci.org/salemdar/angular2-cookie.svg?branch=0.9.5)](https://travis-ci.org/salemdar/angular2-cookie) [![npm version](https://badge.fury.io/js/angular2-cookie.svg)](http://badge.fury.io/js/angular2-cookie) [![Downloads](http://img.shields.io/npm/dm/angular2-cookie.svg)](https://npmjs.org/package/angular2-cookie)
 
 > Implementation of Angular 1.x $cookies service to Angular 2 **v0.9.5**
 
@@ -6,14 +6,14 @@
 - [Get Started](#get-started)
   - [Installation](#installation)
   - [Usage](#usage)
-- [CookieService] (#cookieservice)
-  - [get()] (#get)
-  - [getObject()] (#getobject)
-  - [getAll()] (#getall)
-  - [put()] (#put)
-  - [putObject()] (#putobject)
-  - [remove()] (#remove)
-  - [removeAll()] (#removeall)
+- [CookieService](#cookieservice)
+  - [get()](#get)
+  - [getObject()](#getobject)
+  - [getAll()](#getall)
+  - [put()](#put)
+  - [putObject()](#putobject)
+  - [remove()](#remove)
+  - [removeAll()](#removeall)
 - [Options](#options)
 - [Overriding default options globally](#overriding-default-options-globally)
 
@@ -25,7 +25,7 @@ You can install this package locally with npm.
 
 ```bash
 # To get the latest stable version and update package.json file:
-npm install angular2-cookies --save
+npm install angular2-cookie --save
 ```
 
 After installing the library, you should include it in the `index.html` file.
@@ -49,8 +49,8 @@ After installing the library, you should include it in the `index.html` file.
   <script src="node_modules/rxjs/bundles/Rx.js"></script>
   <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 
-  <!-- Include angular2-cookies library -->
-  <script src="node_modules/angular2-cookies/bundles/angular2-cookies.min.js"></script>
+  <!-- Include angular2-cookie library -->
+  <script src="node_modules/angular2-cookie/bundles/angular2-cookie.min.js"></script>
 
   <!-- 2. Configure SystemJS -->
   <script>
@@ -76,7 +76,7 @@ Then, it will be available in the constructor of the component class.
 
 ```typescript
 import {Component} from 'angular2/core';
-import {CookieService} from 'angular2-cookies/core';
+import {CookieService} from 'angular2-cookie/core';
 
 @Component({
     selector: 'my-very-cool-app',

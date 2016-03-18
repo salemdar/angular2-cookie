@@ -11,7 +11,11 @@
     "angular",
     "ng2",
     "cookie",
-    "cookies"
+    "cookies",
+    "angular2-cookie",
+    "angular2-cookies",
+    "ng2-cookies",
+    "ng2-cookie"
   ],
   "author": "Samet Alemdar <sa.alemdar@hotmail.com>",
   "license": "MIT",

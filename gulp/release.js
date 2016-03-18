@@ -20,8 +20,17 @@ gulp.task('readme', ['clean:readme'], () => {
     pkg: basePkgJson,
   }))
   .pipe($.rename('README.md'))
-  .pipe(gulp.dest(config.PATHS.dist.base))
   .pipe(gulp.dest('./'));
+});
+
+gulp.task('readme:dist', ['clean:readme'], () => {
+  const basePkgJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+  return gulp.src('./assets/readme.npm.tmpl.md')
+  .pipe($.template({
+    pkg: basePkgJson,
+  }))
+  .pipe($.rename('README.md'))
+  .pipe(gulp.dest(config.PATHS.dist.base));
 });
 
 gulp.task('changelog', () =>
