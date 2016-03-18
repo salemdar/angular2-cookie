@@ -7,23 +7,21 @@ env:
   global:
     secure: wpzMBDZxWd4EoT2j1qjCviEKXOpM4YH3LRjTbqplOCzwIs29BlpYtrvY5nL2by/5IGhy30x/HkArFeQcZs1qMIrm6WSBEUrdlAvSps4IJPAzzf1AvclqFf2eXTzxkB3bRMtCrTdeB5JNTtb/WBpdR6EeiDG8Z4j8bf+D1QRLGv5QDi+lqfbac3yWP0LV0mFpYTR6n8mCWjac8NU1pB8Q4awiUkFJyxRY96V0c7lbTAbh10wIvvUQahl+DjkRICB5fhyFbCS0GjW3BpoqpRIx9OrAsC2PZelIGUOxyzcA/XIK/iRyB/t7uPuMwNW8N1rLNjCpZJaB+awJCngLWVzUDysUeXs24UKN5ASjH+dhTXl3wGn5zd9b8QlP6aJ9VQ/SnNbYNvPI0ZxBnxveHVbukJKTccHwIzywgjsvEqdUPR+dR3tBDCIXIvEwhBFq4JGIfcQ3j+m6H6Vyv71X+Q+pZwxNSyCHxp5ECOHXhOmCLOc99SmiGT6ni6H6UpKGAtxkrbmJpebRufJaM7XrXQdlkocKBSn/ItOkLBz99uofXi0L6YM834VPedjmJystBznS1OSohJk4ggI2Y0XFgmLl+zPwj+/wshfuged3Cgf8cXiRZ4KGjmrRjtUjn7iaJUPHNa2YKx2pVCSQpdweUWpxqWTTB545/M6bp3E0ODuOBWk=
 
-#deploy:
-#  provider: npm
-#  email: sa.alemdar@hotmail.com
-#  api_key:
-#    secure: wpzMBDZxWd4EoT2j1qjCviEKXOpM4YH3LRjTbqplOCzwIs29BlpYtrvY5nL2by/5IGhy30x/HkArFeQcZs1qMIrm6WSBEUrdlAvSps4IJPAzzf1AvclqFf2eXTzxkB3bRMtCrTdeB5JNTtb/WBpdR6EeiDG8Z4j8bf+D1QRLGv5QDi+lqfbac3yWP0LV0mFpYTR6n8mCWjac8NU1pB8Q4awiUkFJyxRY96V0c7lbTAbh10wIvvUQahl+DjkRICB5fhyFbCS0GjW3BpoqpRIx9OrAsC2PZelIGUOxyzcA/XIK/iRyB/t7uPuMwNW8N1rLNjCpZJaB+awJCngLWVzUDysUeXs24UKN5ASjH+dhTXl3wGn5zd9b8QlP6aJ9VQ/SnNbYNvPI0ZxBnxveHVbukJKTccHwIzywgjsvEqdUPR+dR3tBDCIXIvEwhBFq4JGIfcQ3j+m6H6Vyv71X+Q+pZwxNSyCHxp5ECOHXhOmCLOc99SmiGT6ni6H6UpKGAtxkrbmJpebRufJaM7XrXQdlkocKBSn/ItOkLBz99uofXi0L6YM834VPedjmJystBznS1OSohJk4ggI2Y0XFgmLl+zPwj+/wshfuged3Cgf8cXiRZ4KGjmrRjtUjn7iaJUPHNa2YKx2pVCSQpdweUWpxqWTTB545/M6bp3E0ODuOBWk=
-#  skip_cleanup: true
-#  local_dir: dist
-#  on:
-#    tags: true
-#    repo: salemdar/angular2-cookie
+deploy:
+  provider: npm
+  email: sa.alemdar@hotmail.com
+  api_key:
+    secure: wpzMBDZxWd4EoT2j1qjCviEKXOpM4YH3LRjTbqplOCzwIs29BlpYtrvY5nL2by/5IGhy30x/HkArFeQcZs1qMIrm6WSBEUrdlAvSps4IJPAzzf1AvclqFf2eXTzxkB3bRMtCrTdeB5JNTtb/WBpdR6EeiDG8Z4j8bf+D1QRLGv5QDi+lqfbac3yWP0LV0mFpYTR6n8mCWjac8NU1pB8Q4awiUkFJyxRY96V0c7lbTAbh10wIvvUQahl+DjkRICB5fhyFbCS0GjW3BpoqpRIx9OrAsC2PZelIGUOxyzcA/XIK/iRyB/t7uPuMwNW8N1rLNjCpZJaB+awJCngLWVzUDysUeXs24UKN5ASjH+dhTXl3wGn5zd9b8QlP6aJ9VQ/SnNbYNvPI0ZxBnxveHVbukJKTccHwIzywgjsvEqdUPR+dR3tBDCIXIvEwhBFq4JGIfcQ3j+m6H6Vyv71X+Q+pZwxNSyCHxp5ECOHXhOmCLOc99SmiGT6ni6H6UpKGAtxkrbmJpebRufJaM7XrXQdlkocKBSn/ItOkLBz99uofXi0L6YM834VPedjmJystBznS1OSohJk4ggI2Y0XFgmLl+zPwj+/wshfuged3Cgf8cXiRZ4KGjmrRjtUjn7iaJUPHNa2YKx2pVCSQpdweUWpxqWTTB545/M6bp3E0ODuOBWk=
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    tags: true
+    repo: salemdar/angular2-cookie
 
 addons:
   firefox: '38.0'
 
 before_install:
-  - echo "samet"
-  - echo "$TRAVIS_BRANCH"
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -36,9 +34,3 @@ script:
   - node_modules/.bin/gulp lint
   - node_modules/.bin/gulp build
   - node_modules/.bin/gulp test
-
-after_success:
-  - ./scripts/npm-publish.sh
-  - echo "samet"
-  - echo "$TRAVIS_BRANCH"
-  - echo $TRAVIS_BRANCH
