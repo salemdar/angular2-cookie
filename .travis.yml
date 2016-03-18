@@ -2,9 +2,11 @@ language: node_js
 sudo: false
 node_js:
 - 5.0.0
+
 env:
   global:
     secure: qDA8nV6Cbl4qcN9sh+gpAm5Kua1APcXvL7clwKZyPlXAqv2Usk8oYqu10PfPujaoD1YkpvnoMKzhFymCyRc1zXjSHvL6Jt2zBeKvtiYKfy1cMoP7Hob03lcaRRx0rMn8JyCoT3B+cxO1u9FVcTm1RM+A3OVRuxg5quYMWbCW3C3DE00QyUH2tNQo4t6wcSqElxVMNAxFLOhkxXRaImukBlyVHewzHjCmgU5pYKsHpslpuODGXzMND+kVzjxaVb/AuhZBeYY1Ho5TMPYfphf5tDQ5kl+yVxPiR0acxACHFO6FzW0VjJ1GzEqSEDgDJmtljV3eTY5viQt/cRaiXDg0eqDg+PNoS1yFdivtFJRxQrmLBdk3QE6mzy/n3325bfSfS1dudS7GpFf9UrQj7B+Fx4xm+qyB6lbIuxRZ230X+sOjsL2op/J+aNviqSiu/10D7eZV6RINx66reTb1w9PlVzyIXTsNPgoEU76U6ZyOvqz2O2I2B4+565qyLR8gvc8wfGef7DUZT4htsz9JHWlnuIr2DIEZmSonyMAHb8SBIlj2+/QL4Iip+iSOa/59sO04XZW0sPxOxszS0M+nVCeZXUGwUuW/gj2MbMT2x+5FX8jP802DTMnvxo77zOzBfXVV5DGJcfD9PCXTVfo1sdgSAmFAn5DGc4H46oYGHzdHD9I=
+
 #deploy:
 #  api_key:
 #    secure: qDA8nV6Cbl4qcN9sh+gpAm5Kua1APcXvL7clwKZyPlXAqv2Usk8oYqu10PfPujaoD1YkpvnoMKzhFymCyRc1zXjSHvL6Jt2zBeKvtiYKfy1cMoP7Hob03lcaRRx0rMn8JyCoT3B+cxO1u9FVcTm1RM+A3OVRuxg5quYMWbCW3C3DE00QyUH2tNQo4t6wcSqElxVMNAxFLOhkxXRaImukBlyVHewzHjCmgU5pYKsHpslpuODGXzMND+kVzjxaVb/AuhZBeYY1Ho5TMPYfphf5tDQ5kl+yVxPiR0acxACHFO6FzW0VjJ1GzEqSEDgDJmtljV3eTY5viQt/cRaiXDg0eqDg+PNoS1yFdivtFJRxQrmLBdk3QE6mzy/n3325bfSfS1dudS7GpFf9UrQj7B+Fx4xm+qyB6lbIuxRZ230X+sOjsL2op/J+aNviqSiu/10D7eZV6RINx66reTb1w9PlVzyIXTsNPgoEU76U6ZyOvqz2O2I2B4+565qyLR8gvc8wfGef7DUZT4htsz9JHWlnuIr2DIEZmSonyMAHb8SBIlj2+/QL4Iip+iSOa/59sO04XZW0sPxOxszS0M+nVCeZXUGwUuW/gj2MbMT2x+5FX8jP802DTMnvxo77zOzBfXVV5DGJcfD9PCXTVfo1sdgSAmFAn5DGc4H46oYGHzdHD9I=
@@ -12,17 +14,23 @@ env:
 #  provider: npm
 #  on:
 #    -tags: true
+
 addons:
   firefox: '38.0'
+
 before_install:
-- export CHROME_BIN=chromium-browser
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
 install:
-- npm install
-- "./node_modules/.bin/typings install"
+  - npm install
+
 script:
-- node_modules/.bin/gulp clang:format
-- node_modules/.bin/gulp lint
-- node_modules/.bin/gulp build
-- node_modules/.bin/gulp test
+  - node_modules/.bin/gulp clang:format
+  - node_modules/.bin/gulp lint
+  - node_modules/.bin/gulp build
+  - node_modules/.bin/gulp test
+
+after_success:
+  - ./scripts/npm-publish.sh
