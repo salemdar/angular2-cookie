@@ -1,6 +1,6 @@
 {
   "name": "angular2-cookie",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Implementation of Angular 1.x $cookies service to Angular 2",
   "repository": {
     "type": "git",
@@ -30,15 +30,15 @@
     "postinstall": "typings install"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.11",
+    "angular2": "^2.0.0-beta.12",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.35.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.4"
+    "zone.js": "0.6.6"
   },
   "devDependencies": {
-    "babel-eslint": "^5.0.0",
+    "babel-eslint": "^6.0.0",
     "clang-format": "^1.0.35",
     "del": "^2.2.0",
     "eslint": "^2.4.0",

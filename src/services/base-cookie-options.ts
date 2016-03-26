@@ -7,7 +7,7 @@ import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 export class CookieOptions {
   path: string;
   domain: string;
-  expires: string | Date;
+  expires: string|Date;
   secure: boolean;
 
   constructor({path, domain, expires, secure}: CookieOptionsArgs) {
