@@ -2,6 +2,8 @@
 
 > <%= pkg.description %> **v<%= pkg.version %>**
 
+_Please use 1.1.x versions for angular2 beta, 1.2.x versions are for release candidates._
+
 ## Table of contents:
 - [Get Started](#get-started)
   - [Installation](#installation)
