@@ -2,6 +2,8 @@
 
 > <%= pkg.description %> **v<%= pkg.version %>**
 
+_Please use 1.1.x versions for angular2 beta, 1.2.x versions are for release candidates._
+
 ## Table of contents:
 - [Get Started](#get-started)
   - [Installation](#installation)
@@ -28,45 +30,59 @@ You can install this package locally with npm.
 npm install angular2-cookie --save
 ```
 
-After installing the library, you should include it in the `index.html` file.
+After installing the library, it should be included in the SystemJS configurations.
 
-```html
-<head>
-  <base href="/">
-  <title>My Very Cool App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+```javascript
+/**
+ * System configuration for Angular 2 samples
+ * Adjust as necessary for your application needs.
+ * Override at the last minute with global.filterSystemConfig (as plunkers do)
+ * Taken from: https://github.com/angular/quickstart/blob/master/systemjs.config.js
+ */
+(function(global) {
 
-  <link rel="stylesheet" href="styles.css">
+  // map tells the System loader where to look for things
+  var map = {
+    'app':                        'app', // 'dist',
+    'rxjs':                       'node_modules/rxjs',
+    'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
+    '@angular':                   'node_modules/@angular',
+    'angular2-cookie':            'node_modules/angular2-cookie',
+  };
 
-  <!-- 1. Load libraries -->
-  <!-- IE required polyfills, in this exact order -->
-  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-  <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+  // packages tells the System loader how to load when no filename and/or no extension
+  var packages = {
+    'app':                        { main: 'main.js',  defaultExtension: 'js' },
+    'angular2-cookie':            { main: 'core.js',  defaultExtension: 'js' },
+    'rxjs':                       { defaultExtension: 'js' },
+    'angular2-in-memory-web-api': { defaultExtension: 'js' },
+  };
 
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
-  <script src="node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  var packageNames = [
+    '@angular/common',
+    '@angular/compiler',
+    '@angular/core',
+    '@angular/http',
+    '@angular/platform-browser',
+    '@angular/platform-browser-dynamic',
+    '@angular/router-deprecated',
+    '@angular/testing',
+    '@angular/upgrade',
+  ];
 
-  <!-- Include angular2-cookie library -->
-  <script src="node_modules/angular2-cookie/bundles/angular2-cookie.min.js"></script>
+  // add package entries for angular packages in the form '@angular/common': { main: 'index.js', defaultExtension: 'js' }
+  packageNames.forEach(function(pkgName) {
+    packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
+  });
 
-  <!-- 2. Configure SystemJS -->
-  <script>
-    System.config({
-      packages: {
-        "app": {
-          format: 'register',
-          defaultExtension: 'js'
-        }
-      }
-    });
-    System.import('app/main')
-            .then(null, console.error.bind(console));
-  </script>
+  var config = {
+    map: map,
+    packages: packages
+  }
 
-</head>
+  System.config(config);
+
+})(this);
 ```
 
 ### <a name="usage"></a> Usage
