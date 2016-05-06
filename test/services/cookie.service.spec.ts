@@ -1,14 +1,6 @@
 import {CookieService} from '../../src/services/cookies.service';
-import {
-  describe,
-  it,
-  inject,
-  expect,
-  beforeEachProviders,
-  beforeEach,
-  afterEach
-} from 'angular2/testing';
-import {Json} from 'angular2/src/facade/lang';
+import {describe, it, inject, expect, beforeEachProviders, beforeEach} from '@angular/core/testing';
+import {Json} from '@angular/core/src/facade/lang';
 import {ANGULAR2_COOKIE_PROVIDERS} from '../../src/core';
 
 export function main() {

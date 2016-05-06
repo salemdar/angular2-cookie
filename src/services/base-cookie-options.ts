@@ -1,13 +1,13 @@
-import {isPresent} from 'angular2/src/facade/lang';
+import {isPresent} from '@angular/common/src/facade/lang';
 import {CookieOptionsArgs} from './cookie-options-args.model';
-import {Injectable} from 'angular2/core';
-import {DOM} from 'angular2/src/platform/dom/dom_adapter';
+import {Injectable} from '@angular/core';
+import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
 
 /** @private */
 export class CookieOptions {
   path: string;
   domain: string;
-  expires: string|Date;
+  expires: string | Date;
   secure: boolean;
 
   constructor({path, domain, expires, secure}: CookieOptionsArgs) {
@@ -30,5 +30,5 @@ export class CookieOptions {
 /** @private */
 @Injectable()
 export class BaseCookieOptions extends CookieOptions {
-  constructor() { super(<CookieOptionsArgs>{path: DOM.getBaseHref()}); }
+  constructor() { super(<CookieOptionsArgs>{path: getDOM().getBaseHref()}); }
 }
