@@ -14,39 +14,38 @@ const bundleConfig = {
   paths: {
     'angular2-cookie/*': '*',
     '@angular/*': './node_modules/@angular/*',
-    '*': './node_modules/*'
+    '*': './node_modules/*',
   },
   packages: {
     '@angular/core': {
       main: 'index.js',
-      defaultExtension: 'js'
+      defaultExtension: 'js',
     },
     '@angular/compiler': {
       main: 'index.js',
-      defaultExtension: 'js'
+      defaultExtension: 'js',
     },
     '@angular/common': {
       main: 'index.js',
-      defaultExtension: 'js'
+      defaultExtension: 'js',
     },
     '@angular/platform-browser': {
       main: 'index.js',
-      defaultExtension: 'js'
+      defaultExtension: 'js',
     },
     '@angular/platform-browser-dynamic': {
       main: 'index.js',
-      defaultExtension: 'js'
+      defaultExtension: 'js',
     },
     '@angular/router-deprecated': {
       main: 'index.js',
-      defaultExtension: 'js'
+      defaultExtension: 'js',
     },
-    'rxjs': {
+    rxjs: {
       main: 'Rx.js',
-      defaultExtension: 'js'
-    }
-  }
-
+      defaultExtension: 'js',
+    },
+  },
 };
 
 function bundle(moduleName, moduleBundleName, minify, done) {
