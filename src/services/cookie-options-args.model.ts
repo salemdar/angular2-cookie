@@ -17,8 +17,8 @@
  *   secured connection.
  */
 export interface CookieOptionsArgs {
-  path: string;
-  domain: string;
-  expires: string | Date;
-  secure: boolean;
+  path?: string;
+  domain?: string;
+  expires?: string | Date;
+  secure?: boolean;
 }
