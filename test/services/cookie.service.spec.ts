@@ -1,11 +1,11 @@
 import {CookieService} from '../../src/services/cookies.service';
-import {describe, it, inject, expect, beforeEachProviders, beforeEach} from '@angular/core/testing';
+import {inject, addProviders} from '@angular/core/testing';
 import {Json} from '@angular/core/src/facade/lang';
 import {ANGULAR2_COOKIE_PROVIDERS} from '../../src/core';
 
 export function main() {
   describe('CookieService', () => {
-    beforeEachProviders(() => [ANGULAR2_COOKIE_PROVIDERS, CookieService]);
+    beforeEach(() => addProviders([ANGULAR2_COOKIE_PROVIDERS, CookieService]));
     beforeEach(
         inject([CookieService], (cookieService: CookieService) => { cookieService.removeAll(); }));
 
@@ -90,4 +90,4 @@ export function main() {
        }));
 
   });
-};
+}
