@@ -19,6 +19,6 @@
 export interface CookieOptionsArgs {
   path?: string;
   domain?: string;
-  expires?: string | Date;
+  expires?: string|Date;
   secure?: boolean;
 }

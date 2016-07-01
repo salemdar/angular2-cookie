@@ -1,5 +1,6 @@
 import {provide} from '@angular/core';
-import {CookieOptions, BaseCookieOptions} from './services';
+
+import {BaseCookieOptions, CookieOptions} from './services';
 
 export * from './services';
 

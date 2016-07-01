@@ -2,11 +2,12 @@ const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
 const config = require('./config');
 const path = require('path');
+const tsLintJson = require('../tslint.json');
 
 gulp.task('tslint', () =>
   gulp.src(config.PATHS.tsSrcFiles)
   .pipe($.tslint({
-    configuration: require('../tslint.json'),
+    configuration: tsLintJson,
   })).pipe($.tslint.report('verbose'))
 );
 

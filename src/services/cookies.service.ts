@@ -1,5 +1,6 @@
+import {Json, isBlank, isPresent, isString} from '@angular/common/src/facade/lang';
 import {Injectable, Optional} from '@angular/core';
-import {Json, isPresent, isBlank, isString} from '@angular/common/src/facade/lang';
+
 import {CookieOptions} from './base-cookie-options';
 import {BaseCookieOptions} from './base-cookie-options';
 import {CookieOptionsArgs} from './cookie-options-args.model';
@@ -176,8 +177,8 @@ export class CookieService {
     return str;
   }
 
-  private _mergeOptions(defaultOpts: BaseCookieOptions,
-                        providedOpts?: CookieOptionsArgs): CookieOptions {
+  private _mergeOptions(defaultOpts: BaseCookieOptions, providedOpts?: CookieOptionsArgs):
+      CookieOptions {
     let newOpts = defaultOpts;
     if (isPresent(providedOpts)) {
       return newOpts.merge(new CookieOptions(providedOpts));
