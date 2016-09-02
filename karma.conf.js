@@ -5,7 +5,8 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
     plugins: [
       require('karma-jasmine'),
-      require('karma-chrome-launcher')
+      require('karma-chrome-launcher'),
+      require('karma-mocha-reporter')
     ],
     customLaunchers: {
       Chrome_travis: {
@@ -33,6 +34,7 @@ module.exports = function (config) {
 
       { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
+      { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
       { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
 
@@ -59,8 +61,10 @@ module.exports = function (config) {
       '/base/src/': '/base/dist/',
       '/base/test-built/src': '/base/dist'
     },
-
-    reporters: ['progress'],
+    exclude: [
+      'node_modules/**/*spec.js'
+    ],
+    reporters: ['mocha'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
@@ -70,6 +74,8 @@ module.exports = function (config) {
   };
   if (process.env.TRAVIS) {
     configuration.browsers = ['Chrome_travis'];
+    configuration.singleRun = true;
+    configuration.browserNoActivityTimeout = 90000;
   }
   config.set(configuration);
 };

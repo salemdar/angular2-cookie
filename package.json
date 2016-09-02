@@ -67,6 +67,7 @@
     "karma": "1.2.0",
     "karma-chrome-launcher": "2.0.0",
     "karma-jasmine": "^1.0.2",
+    "karma-mocha-reporter": "^2.1.0",
     "merge2": "1.0.2",
     "replace": "0.3.0",
     "require-dir": "0.3.0",
