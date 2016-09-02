@@ -2,12 +2,16 @@
 
 > <%= pkg.description %> **v<%= pkg.version %>**
 
-_Please use 1.1.x versions for angular2 beta, 1.2.x versions are for release candidates._
+_Please use 1.1.x versions for angular2 beta, 1.2.2 version is for release candidates earlier than rc.5 and 1.2.3 is for >rc.5._
 
 ## Table of contents:
 - [Get Started](#get-started)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [Examples](#examples)
+    - [Angular2-quickstart](#quickstart)
+    - [Angular2-seed](#seed)
+    - [Angular-cli](#cli)
 - [CookieService](#cookieservice)
   - [get()](#get)
   - [getObject()](#getobject)
@@ -36,52 +40,53 @@ After installing the library, it should be included in the SystemJS configuratio
 /**
  * System configuration for Angular 2 samples
  * Adjust as necessary for your application needs.
- * Override at the last minute with global.filterSystemConfig (as plunkers do)
  * Taken from: https://github.com/angular/quickstart/blob/master/systemjs.config.js
  */
-(function(global) {
+(function (global) {
+  System.config({
+    paths: {
+      // paths serve as alias
+      'npm:': 'node_modules/'
+    },
+    // map tells the System loader where to look for things
+    map: {
+      // our app is within the app folder
+      app: 'app',
 
-  // map tells the System loader where to look for things
-  var map = {
-    'app':                        'app', // 'dist',
-    'rxjs':                       'node_modules/rxjs',
-    'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-    '@angular':                   'node_modules/@angular',
-    'angular2-cookie':            'node_modules/angular2-cookie',
-  };
+      // angular bundles
+      '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+      '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+      '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+      '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+      '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+      '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+      '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
+      '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
-  // packages tells the System loader how to load when no filename and/or no extension
-  var packages = {
-    'app':                        { main: 'main.js',  defaultExtension: 'js' },
-    'angular2-cookie':            { main: 'core.js',  defaultExtension: 'js' },
-    'rxjs':                       { defaultExtension: 'js' },
-    'angular2-in-memory-web-api': { defaultExtension: 'js' },
-  };
-
-  var packageNames = [
-    '@angular/common',
-    '@angular/compiler',
-    '@angular/core',
-    '@angular/http',
-    '@angular/platform-browser',
-    '@angular/platform-browser-dynamic',
-    '@angular/router-deprecated',
-    '@angular/testing',
-    '@angular/upgrade',
-  ];
-
-  // add package entries for angular packages in the form '@angular/common': { main: 'index.js', defaultExtension: 'js' }
-  packageNames.forEach(function(pkgName) {
-    packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
+      // other libraries
+      'rxjs':                       'npm:rxjs',
+      'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
+      'angular2-cookie':            'npm:angular2-cookie'
+    },
+    // packages tells the System loader how to load when no filename and/or no extension
+    packages: {
+      app: {
+        main: './main.js',
+        defaultExtension: 'js'
+      },
+      rxjs: {
+        defaultExtension: 'js'
+      },
+      'angular2-in-memory-web-api': {
+        main: './index.js',
+        defaultExtension: 'js'
+      },
+      'angular2-cookie': {
+        main: './core.js',
+        defaultExtension: 'js'
+      }
+    }
   });
-
-  var config = {
-    map: map,
-    packages: packages
-  }
-
-  System.config(config);
-
 })(this);
 ```
 
@@ -91,13 +96,29 @@ After installing the library, it should be included in the SystemJS configuratio
 Then, it will be available in the constructor of the component class.
 
 ```typescript
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+
+import { AppComponent }  from './app.component';
+
+@NgModule({
+  imports: [ BrowserModule ],
+  declarations: [ AppComponent ],
+  providers: [ CookieService ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
+
+```typescript
 import {Component} from 'angular2/core';
 import {CookieService} from 'angular2-cookie/core';
 
 @Component({
     selector: 'my-very-cool-app',
-    template: '<h1>My Angular2 App with Cookies</h1>',
-    providers: [CookieService]
+    template: '<h1>My Angular2 App with Cookies</h1>'
 })
 
 export class AppComponent { 
@@ -108,6 +129,141 @@ export class AppComponent {
   }
 }
 ```
+
+### <a name="examples"></a> Examples
+
+Here you can find some usage examples with popular boilerplate libraries.
+
+#### <a name="quickstart"></a> Angular2-quickstart
+
+A boilerplate provided by Angular team.
+_(Link: [https://github.com/angular/quickstart](https://github.com/angular/quickstart)_
+
+Just edit the `systemjs.config.js` file and add the `angular2-cookie` there.
+
+```typescript
+/**
+ * System configuration for Angular 2 samples
+ * Adjust as necessary for your application needs.
+ */
+(function (global) {
+  System.config({
+    paths: {
+      // paths serve as alias
+      'npm:': 'node_modules/'
+    },
+    // map tells the System loader where to look for things
+    map: {
+      // our app is within the app folder
+      app: 'app',
+
+      // angular bundles
+      '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+      '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+      '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+      '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+      '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+      '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+      '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
+      '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+
+      // other libraries
+      'rxjs':                       'npm:rxjs',
+      'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
+      'angular2-cookie':            'npm:angular2-cookie'
+    },
+    // packages tells the System loader how to load when no filename and/or no extension
+    packages: {
+      app: {
+        main: './main.js',
+        defaultExtension: 'js'
+      },
+      rxjs: {
+        defaultExtension: 'js'
+      },
+      'angular2-in-memory-web-api': {
+        main: './index.js',
+        defaultExtension: 'js'
+      },
+      'angular2-cookie': {
+        main: './core.js',
+        defaultExtension: 'js'
+      }
+    }
+  });
+})(this);
+```
+
+#### <a name="seed"></a> Angular2-seed
+
+A popular seed project.
+_(Link: [https://github.com/mgechev/angular2-seed](https://github.com/mgechev/angular2-seed)_
+
+Add the following settings to the (constructor of) `ProjectConfig` class (path: `./tools/config/project.config.ts`).
+
+```typescript
+/* Add to or override NPM module configurations: */
+//this.mergeObject( this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false } );
+this.mergeObject(this.SYSTEM_CONFIG_DEV['paths'], {'angular2-cookie': 'node_modules/angular2-cookie/bundles/angular2-cookie.js'});
+this.mergeObject(this.SYSTEM_BUILDER_CONFIG['packages'], {
+  'angular2-cookie': {
+    main: 'core.js',
+    defaultExtension: 'js'
+  }
+});
+```
+
+Do not forget to inject the service in the module (`providers` array).
+
+#### <a name="cli"></a> Angular-cli
+
+A CLI tool for Angular2.
+_(Link: [https://github.com/angular/angular-cli](https://github.com/angular/angular-cli)_
+
+Edit the `vendorNpmFiles` array (path: `./angular-cli-build.js`).
+
+```javascript
+// Angular-CLI build configuration
+// This file lists all the node_modules files that will be used in a build
+// Also see https://github.com/angular/angular-cli/wiki/3rd-party-libs
+
+/* global require, module */
+
+var Angular2App = require('angular-cli/lib/broccoli/angular2-app');
+
+module.exports = function(defaults) {
+  return new Angular2App(defaults, {
+    vendorNpmFiles: [
+      'systemjs/dist/system-polyfills.js',
+      'systemjs/dist/system.src.js',
+      'zone.js/dist/**/*.+(js|js.map)',
+      'es6-shim/es6-shim.js',
+      'reflect-metadata/**/*.+(ts|js|js.map)',
+      'rxjs/**/*.+(js|js.map)',
+      '@angular/**/*.+(js|js.map)',
+      'angular2-cookie/**/*.+(js|js.map)'
+    ]
+  });
+};
+```
+
+Also add `angular2-cookie` to the `map` and `packages` object in the `system-config.ts` (path: `./src/system-config.ts`)
+
+```typescript
+/***********************************************************************************************
+ * User Configuration.
+ **********************************************************************************************/
+/** Map relative paths to URLs. */
+const map: any = {
+  'angular2-cookie': 'vendor/angular2-cookie'
+};
+
+/** User packages configuration. */
+const packages: any = {
+  'angular2-cookie': {main: 'core.js', defaultExtension: 'js'},
+};
+```
+
 
 ## <a name="cookieservice"></a> CookieService
 

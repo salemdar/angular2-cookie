@@ -1,6 +1,6 @@
 {
   "name": "angular2-cookie",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Implementation of Angular 1.x $cookies service to Angular 2",
   "repository": {
     "type": "git",
@@ -30,20 +30,20 @@
     "postinstall": "typings install"
   },
   "dependencies": {
-    "@angular/common": "^2.0.0-rc.4",
-    "@angular/compiler": "^2.0.0-rc.4",
-    "@angular/core": "^2.0.0-rc.4",
-    "@angular/platform-browser": "^2.0.0-rc.4",
-    "es6-shim": "^0.35.1",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12"
+    "@angular/common": "^2.0.0-rc.6",
+    "@angular/compiler": "^2.0.0-rc.6",
+    "@angular/core": "^2.0.0-rc.6",
+    "@angular/platform-browser": "^2.0.0-rc.6",
+    "core-js": "^2.4.0",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.11",
+    "zone.js": "^0.6.17"
   },
   "devDependencies": {
-    "@angular/platform-browser-dynamic": "^2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.6",
     "babel-eslint": "^6.1.0",
-    "clang-format": "^1.0.42",
-    "del": "^2.2.1",
+    "clang-format": "^1.0.43",
+    "del": "^2.2.2",
     "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.10.0",
@@ -64,17 +64,18 @@
     "gulp-tslint": "5.0.0",
     "gulp-typescript": "2.13.0",
     "jasmine-core": "2.4.1",
-    "karma": "1.1.0",
-    "karma-chrome-launcher": "1.0.1",
-    "karma-jasmine": "^0.3.8",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-jasmine": "^1.0.2",
     "merge2": "1.0.2",
     "replace": "0.3.0",
     "require-dir": "0.3.0",
     "run-sequence": "1.2.2",
     "systemjs": "0.19.27",
     "systemjs-builder": "0.15.23",
-    "tslint": "3.13.0",
-    "typescript": "^1.8.10",
-    "typings": "1.3.1"
+    "traceur": "^0.0.111",
+    "tslint": "3.15.1",
+    "typescript": "2.0.2",
+    "typings": "1.3.3"
   }
 }

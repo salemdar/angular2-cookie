@@ -14,7 +14,9 @@ module.exports = function (config) {
       }
     },
     files: [
-      { pattern: 'node_modules/es6-shim/es6-shim.js', included: true, watched: true },
+      { pattern: 'node_modules/core-js/client/shim.min.js', included: true, watched: true },
+
+      { pattern: 'node_modules/traceur/bin/traceur.js', included: true, watched: true },
 
       { pattern: 'node_modules/reflect-metadata/Reflect.js', included: true, watched: true },
 
@@ -22,9 +24,12 @@ module.exports = function (config) {
       { pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true },
 
       { pattern: 'node_modules/zone.js/dist/zone.js', included: true, watched: true },
-      { pattern: 'node_modules/zone.js/dist/jasmine-patch.js', included: true, watched: true },
+      { pattern: 'node_modules/zone.js/dist/long-stack-trace-zone.js', included: true, watched: true },
       { pattern: 'node_modules/zone.js/dist/async-test.js', included: true, watched: true },
       { pattern: 'node_modules/zone.js/dist/fake-async-test.js', included: true, watched: true },
+      { pattern: 'node_modules/zone.js/dist/sync-test.js', included: true, watched: true },
+      { pattern: 'node_modules/zone.js/dist/proxy.js', included: true, watched: true },
+      { pattern: 'node_modules/zone.js/dist/jasmine-patch.js', included: true, watched: true },
 
       { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },

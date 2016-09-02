@@ -1,4 +1,16 @@
 /*eslint-disable */
+
+if (!Object.hasOwnProperty('name')) {
+  Object.defineProperty(Function.prototype, 'name', {
+    get: function() {
+      var matches = this.toString().match(/^\s*function\s*(\S*)\s*\(/);
+      var name = matches && matches.length > 1 ? matches[1] : "";
+      Object.defineProperty(this, 'name', {value: name});
+      return name;
+    }
+  });
+}
+
 // Turn on full stack traces in errors to help debugging
 Error.stackTraceLimit = Infinity;
 
@@ -20,13 +32,11 @@ System.config({
     '@angular': 'node_modules/@angular'
   },
   packages: {
-    'base/src': {
-      defaultJSExtensions: true
+    '@angular/common': {
+      main: 'index.js',
+      defaultExtension: 'js'
     },
-    'base/test-built/src': {
-      defaultJSExtensions: true
-    },
-    '@angular/core': {
+    '@angular/common/testing': {
       main: 'index.js',
       defaultExtension: 'js'
     },
@@ -34,7 +44,27 @@ System.config({
       main: 'index.js',
       defaultExtension: 'js'
     },
-    '@angular/common': {
+    '@angular/compiler/testing': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@angular/core': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@angular/core/testing': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@angular/forms': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@angular/http': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@angular/http/testing': {
       main: 'index.js',
       defaultExtension: 'js'
     },
@@ -42,11 +72,23 @@ System.config({
       main: 'index.js',
       defaultExtension: 'js'
     },
+    '@angular/platform-browser/testing': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@angular/platform-browser-dynamic/testing': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
     '@angular/platform-browser-dynamic': {
       main: 'index.js',
       defaultExtension: 'js'
     },
-    '@angular/router-deprecated': {
+    '@angular/router': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@angular/router/testing': {
       main: 'index.js',
       defaultExtension: 'js'
     },
@@ -60,12 +102,14 @@ Promise.all([
   System.import('@angular/core/testing'),
   System.import('@angular/platform-browser-dynamic/testing')
 ]).then(function (providers) {
-  debugger;
   var testing = providers[0];
   var testingBrowser = providers[1];
 
-  testing.setBaseTestProviders(testingBrowser.TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
-    testingBrowser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS);
+  testing.TestBed.initTestEnvironment(
+    testingBrowser.BrowserDynamicTestingModule,
+    testingBrowser.platformBrowserDynamicTesting()
+  );
+
 
 }).then(function() {
   return Promise.all(
@@ -91,11 +135,17 @@ Promise.all([
 
 
 function onlySpecFiles(path) {
-  return /[\.|_]spec\.js$/.test(path);
+  // check for individual files, if not given, always matches to all
+  var patternMatched = __karma__.config.files ?
+    path.match(new RegExp(__karma__.config.files)) : true;
+
+  return patternMatched && /[\.|_]spec\.js$/.test(path);
 }
 
 // Normalize paths to module names.
 function file2moduleName(filePath) {
-  return filePath.replace(/\\/g, '/');
+  return filePath.replace(/\\/g, '/')
+  .replace(/^\/base\//, '')
+  .replace(/\.js$/, '');
 }
 /*eslint-enable */

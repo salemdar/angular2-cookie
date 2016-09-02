@@ -1,7 +1,5 @@
-import {isPresent} from '@angular/common/src/facade/lang';
-import {Injectable} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
-
+import {APP_BASE_HREF} from '@angular/common';
+import {Inject, Injectable, Injector, Optional} from '@angular/core';
 import {CookieOptionsArgs} from './cookie-options-args.model';
 
 /** @private */
@@ -11,25 +9,32 @@ export class CookieOptions {
   expires: string|Date;
   secure: boolean;
 
-  constructor({path, domain, expires, secure}: CookieOptionsArgs) {
-    this.path = isPresent(path) ? path : null;
-    this.domain = isPresent(domain) ? domain : null;
-    this.expires = isPresent(expires) ? expires : null;
-    this.secure = isPresent(secure) ? secure : false;
+  constructor({path, domain, expires, secure}: CookieOptionsArgs = {}) {
+    this.path = this.isPresent(path) ? path : null;
+    this.domain = this.isPresent(domain) ? domain : null;
+    this.expires = this.isPresent(expires) ? expires : null;
+    this.secure = this.isPresent(secure) ? secure : false;
   }
 
   merge(options?: CookieOptionsArgs): CookieOptions {
     return new CookieOptions(<CookieOptionsArgs>{
-      path: isPresent(options) && isPresent(options.path) ? options.path : this.path,
-      domain: isPresent(options) && isPresent(options.domain) ? options.domain : this.domain,
-      expires: isPresent(options) && isPresent(options.expires) ? options.expires : this.expires,
-      secure: isPresent(options) && isPresent(options.secure) ? options.secure : this.secure,
+      path: this.isPresent(options) && this.isPresent(options.path) ? options.path : this.path,
+      domain: this.isPresent(options) && this.isPresent(options.domain) ? options.domain :
+                                                                          this.domain,
+      expires: this.isPresent(options) && this.isPresent(options.expires) ? options.expires :
+                                                                            this.expires,
+      secure: this.isPresent(options) && this.isPresent(options.secure) ? options.secure :
+                                                                          this.secure,
     });
   }
+
+  private isPresent(obj: any): boolean { return obj !== undefined && obj !== null; }
 }
 
 /** @private */
 @Injectable()
 export class BaseCookieOptions extends CookieOptions {
-  constructor() { super(<CookieOptionsArgs>{path: getDOM().getBaseHref()}); }
+  constructor(@Optional() @Inject(APP_BASE_HREF) private baseHref: string) {
+    super({path: baseHref || '/'});
+  }
 }
