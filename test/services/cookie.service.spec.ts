@@ -1,6 +1,6 @@
+import { ReflectiveInjector } from '@angular/core';
 import { CookieService } from '../../src/services/cookies.service';
 import { ANGULAR2_COOKIE_PROVIDERS } from '../../src/core';
-import { ReflectiveInjector } from '@angular/core';
 
 export function main() {
   describe('CookieService', () => {

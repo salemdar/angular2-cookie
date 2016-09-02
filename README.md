@@ -137,7 +137,7 @@ Here you can find some usage examples with popular boilerplate libraries.
 #### <a name="quickstart"></a> Angular2-quickstart
 
 A boilerplate provided by Angular team.
-_(Link: [https://github.com/angular/quickstart](https://github.com/angular/quickstart)_
+_(Link: [https://github.com/angular/quickstart](https://github.com/angular/quickstart))_
 
 Just edit the `systemjs.config.js` file and add the `angular2-cookie` there.
 
@@ -197,7 +197,7 @@ Just edit the `systemjs.config.js` file and add the `angular2-cookie` there.
 #### <a name="seed"></a> Angular2-seed
 
 A popular seed project.
-_(Link: [https://github.com/mgechev/angular2-seed](https://github.com/mgechev/angular2-seed)_
+_(Link: [https://github.com/mgechev/angular2-seed](https://github.com/mgechev/angular2-seed))_
 
 Add the following settings to the (constructor of) `ProjectConfig` class (path: `./tools/config/project.config.ts`).
 
@@ -218,7 +218,7 @@ Do not forget to inject the service in the module (`providers` array).
 #### <a name="cli"></a> Angular-cli
 
 A CLI tool for Angular2.
-_(Link: [https://github.com/angular/angular-cli](https://github.com/angular/angular-cli)_
+_(Link: [https://github.com/angular/angular-cli](https://github.com/angular/angular-cli))_
 
 Edit the `vendorNpmFiles` array (path: `./angular-cli-build.js`).
 
