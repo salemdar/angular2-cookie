@@ -2,7 +2,7 @@
 
 > <%= pkg.description %> **v<%= pkg.version %>**
 
-_Please use 1.1.x versions for angular2 beta, 1.2.2 version is for release candidates earlier than rc.5 and 1.2.3 is for >rc.5._
+_Please use >=1.2.4 for Angular >2.0.0, 1.1.x versions for beta, 1.2.2 version is for release candidates earlier than rc.5 and 1.2.3 is for >rc.5._
 
 ## Table of contents:
 - [Get Started](#get-started)
@@ -21,7 +21,6 @@ _Please use 1.1.x versions for angular2 beta, 1.2.2 version is for release candi
   - [remove()](#remove)
   - [removeAll()](#removeall)
 - [Options](#options)
-- [Overriding default options globally](#overriding-default-options-globally)
 
 ## <a name="get-started"></a> Get Started
 
@@ -353,23 +352,6 @@ Options object should be a type of `CookieOptionsArgs` interface. The object may
 - **domain** - {string} - The cookie will be available only for this domain and its sub-domains. For security reasons the user agent will not accept the cookie if the current domain is not a sub-domain of this domain or equal to it.
 - **expires** - {string|Date} - String of the form "Wdy, DD Mon YYYY HH:MM:SS GMT" or a Date object indicating the exact date/time this cookie will expire.
 - **secure** - {boolean} - If `true`, then the cookie will only be available through a secured connection.
-
-## <a name="overriding-default-options-globally"></a> Overriding default options globally
-
-`CookieService` can use `ANGULAR2_COOKIES_PROVIDERS` to provide default options. Thus the default options can be altered by overriding the necessary class.
-See [Angular dependency injection guide](https://angular.io/docs/ts/latest/guide/dependency-injection.html#the-provide-function) for more information on the topic.
-
-```typescript
-import {provide} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
-import {App} from './myapp';
-
-class MyOptions extends BaseCookieOptions {
-  path: string = '/my/path/';
-}
-
-bootstrap(App, [ANGULAR2_COOKIES_PROVIDERS, provide(CookieOptions, {useClass: MyOptions})]);
-```
 
 
 ### <a name="notes"></a> _Note_

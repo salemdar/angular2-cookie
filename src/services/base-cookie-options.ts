@@ -28,7 +28,9 @@ export class CookieOptions {
     });
   }
 
-  private isPresent(obj: any): boolean { return obj !== undefined && obj !== null; }
+  private isPresent(obj: any): boolean {
+    return obj !== undefined && obj !== null;
+  }
 }
 
 /** @private */

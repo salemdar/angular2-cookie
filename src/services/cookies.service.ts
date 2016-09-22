@@ -16,7 +16,9 @@ export class CookieService {
    * @param {string} key Id to use for lookup.
    * @returns {string} Raw cookie value.
    */
-  get(key: string): string { return (<any>this._cookieReader())[key]; }
+  get(key: string): string {
+    return (<any>this._cookieReader())[key];
+  }
 
   /**
    * @name CookieService#getObject
@@ -40,7 +42,9 @@ export class CookieService {
    *
    * @returns {Object} All cookies
    */
-  getAll(): Object { return <any>this._cookieReader(); }
+  getAll(): Object {
+    return <any>this._cookieReader();
+  }
 
   /**
    * @name CookieService#put
@@ -91,7 +95,9 @@ export class CookieService {
    */
   removeAll(): void {
     let cookies = this.getAll();
-    Object.keys(cookies).forEach(key => { this.remove(key); });
+    Object.keys(cookies).forEach(key => {
+      this.remove(key);
+    });
   }
 
   private _cookieReader(): Object {
@@ -168,10 +174,9 @@ export class CookieService {
     // - 4096 bytes per cookie
     let cookieLength = str.length + 1;
     if (cookieLength > 4096) {
-      console.log(
-          `Cookie \'${name}\' possibly not set or overflowed because it was too large (${cookieLength} > 4096 bytes)!`);
+      console.log(`Cookie \'${name}\' possibly not set or overflowed because it was too 
+      large (${cookieLength} > 4096 bytes)!`);
     }
-
     return str;
   }
 
@@ -184,9 +189,15 @@ export class CookieService {
     return newOpts;
   }
 
-  private isBlank(obj: any): boolean { return obj === undefined || obj === null; }
+  private isBlank(obj: any): boolean {
+    return obj === undefined || obj === null;
+  }
 
-  private isPresent(obj: any): boolean { return obj !== undefined && obj !== null; }
+  private isPresent(obj: any): boolean {
+    return obj !== undefined && obj !== null;
+  }
 
-  private isString(obj: any): obj is string { return typeof obj === 'string'; }
+  private isString(obj: any): obj is string {
+    return typeof obj === 'string';
+  }
 }
