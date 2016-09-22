@@ -5,7 +5,7 @@ import {CookieOptionsArgs} from './cookie-options-args.model';
 
 @Injectable()
 export class CookieService {
-  constructor(@Optional() private _defaultOptions: CookieOptions) {}
+  constructor(@Optional() private _defaultOptions?: CookieOptions) {}
 
   /**
    * @name CookieService#get
