@@ -28,9 +28,9 @@ System.config({
 System.config({
   defaultJSExtensions: true,
   packageConfigPaths: [
-    `/node_modules/*/package.json`,
-    `/node_modules/**/package.json`,
-    `/node_modules/@angular/*/package.json`
+    '/node_modules/*/package.json',
+    '/node_modules/**/package.json',
+    '/node_modules/@angular/*/package.json'
   ],
   map: {
     'rxjs': 'node_modules/rxjs',
