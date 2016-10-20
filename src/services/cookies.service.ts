@@ -112,7 +112,6 @@ export class CookieService {
       lastCookieString = currentCookieString;
       cookieArray = lastCookieString.split('; ');
       lastCookies = {};
-
       for (i = 0; i < cookieArray.length; i++) {
         cookie = cookieArray[i];
         index = cookie.indexOf('=');

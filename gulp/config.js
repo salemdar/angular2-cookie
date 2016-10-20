@@ -15,7 +15,7 @@ module.exports.PATHS = {
   generatedDocsDir: 'docs',
   exampleFiles: 'examples/**/*',
   jsFiles: ['gulpfile.js', 'gulp/*.js'],
-  tsConfig: path.join(__dirname, '../tsconfig.json'),
+  tsConfig: path.join(__dirname, './../tsconfig.json'),
   dist: {
     base: 'dist/',
     cjs: 'dist/',

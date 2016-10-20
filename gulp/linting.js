@@ -5,10 +5,15 @@ const path = require('path');
 const tsLintJson = require('../tslint.json');
 
 gulp.task('tslint', () =>
-  gulp.src(config.PATHS.tsSrcFiles)
+  gulp.src([
+    config.PATHS.tsSrcFiles,
+    '!src/**/*.d.ts',
+    '!node_modules',
+  ])
   .pipe($.tslint({
     configuration: tsLintJson,
-  })).pipe($.tslint.report('verbose'))
+    formatter: 'verbose',
+  })).pipe($.tslint.report())
 );
 
 gulp.task('eslint', () =>

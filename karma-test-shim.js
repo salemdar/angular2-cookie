@@ -2,10 +2,10 @@
 
 if (!Object.hasOwnProperty('name')) {
   Object.defineProperty(Function.prototype, 'name', {
-    get: function() {
+    get: function () {
       var matches = this.toString().match(/^\s*function\s*(\S*)\s*\(/);
       var name = matches && matches.length > 1 ? matches[1] : "";
-      Object.defineProperty(this, 'name', {value: name});
+      Object.defineProperty(this, 'name', { value: name });
       return name;
     }
   });
@@ -27,9 +27,22 @@ System.config({
 
 System.config({
   defaultJSExtensions: true,
+  packageConfigPaths: [
+    `/node_modules/*/package.json`,
+    `/node_modules/**/package.json`,
+    `/node_modules/@angular/*/package.json`
+  ],
   map: {
     'rxjs': 'node_modules/rxjs',
-    '@angular': 'node_modules/@angular'
+    '@angular': 'node_modules/@angular',
+    '@angular/core/testing': 'node_modules/@angular/core/bundles/core-testing.umd.js',
+    '@angular/common/testing': 'node_modules/@angular/common/bundles/common-testing.umd.js',
+    '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
+    '@angular/platform-browser/testing': 'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+    '@angular/platform-browser-dynamic/testing': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+    '@angular/http/testing': 'node_modules/@angular/http/bundles/http-testing.umd.js',
+    '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
+    '@angular/forms/testing': 'node_modules/@angular/forms/bundles/forms-testing.umd.js',
   },
   packages: {
     '@angular/common': {
@@ -56,18 +69,6 @@ System.config({
       main: 'index.js',
       defaultExtension: 'js'
     },
-    '@angular/forms': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/http': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/http/testing': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
     '@angular/platform-browser': {
       main: 'index.js',
       defaultExtension: 'js'
@@ -81,14 +82,6 @@ System.config({
       defaultExtension: 'js'
     },
     '@angular/platform-browser-dynamic': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/router': {
-      main: 'index.js',
-      defaultExtension: 'js'
-    },
-    '@angular/router/testing': {
       main: 'index.js',
       defaultExtension: 'js'
     },
@@ -109,15 +102,13 @@ Promise.all([
     testingBrowser.BrowserDynamicTestingModule,
     testingBrowser.platformBrowserDynamicTesting()
   );
-
-
-}).then(function() {
+}).then(function () {
   return Promise.all(
     Object.keys(window.__karma__.files) // All files served by Karma.
     .filter(onlySpecFiles)
     .map(file2moduleName)
-    .map(function(path) {
-      return System.import(path).then(function(module) {
+    .map(function (path) {
+      return System.import(path).then(function (module) {
         if (module.hasOwnProperty('main')) {
           module.main();
         } else {
@@ -126,9 +117,9 @@ Promise.all([
       });
     }));
 })
-.then(function() {
+.then(function () {
   __karma__.start();
-}, function(error) {
+}, function (error) {
   console.error(error.stack || error);
   __karma__.start();
 });

@@ -7,6 +7,17 @@ const Builder = require('systemjs-builder');
 const bundleConfig = {
   baseURL: config.PATHS.dist.cjs,
   defaultJSExtensions: true,
+  typescriptOptions: {
+    tsconfig: true,
+    types: [
+      'node',
+      'core-js',
+      'express',
+      'jasmine',
+      'protractor',
+      'systemjs',
+    ],
+  },
   packageConfigPaths: [
     path.join('.', 'node_modules', '*', 'package.json'),
     path.join('.', 'node_modules', '@angular', '*', 'package.json'),

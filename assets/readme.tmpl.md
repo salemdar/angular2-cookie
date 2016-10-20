@@ -12,6 +12,7 @@ _Please use >=1.2.4 for Angular >2.0.0, 1.1.x versions for beta, 1.2.2 version i
     - [Angular2-quickstart](#quickstart)
     - [Angular2-seed](#seed)
     - [Angular-cli](#cli)
+    - [Angular2 Webpack Starter](#angular2-webpack-starter)
 - [CookieService](#cookieservice)
   - [get()](#get)
   - [getObject()](#getobject)
@@ -261,6 +262,59 @@ const map: any = {
 const packages: any = {
   'angular2-cookie': {main: 'core.js', defaultExtension: 'js'},
 };
+```
+
+#### <a name="cli"></a> Angular2 Webpack Starter
+
+An Angular 2 Starter kit featuring Angular 2 and Webpack 2 by @AngularClass
+_(Link: [https://github.com/AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter))_
+
+Add angular2-cookie to `vendor.browser.ts` (path: `./src/vendor.browser.ts`)
+
+```typescript
+// Angular 2
+import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic';
+import '@angular/core';
+import '@angular/common';
+import '@angular/forms';
+import '@angular/http';
+import '@angular/router';
+
+// angular2 cookie
+import 'angular2-cookie/core'
+
+// AngularClass
+import '@angularclass/hmr';
+
+// RxJS
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+
+if ('production' === ENV) {
+  // Production
+
+
+} else {
+  // Development
+
+}
+
+```
+
+Add `CookieService` to the `APP_PROVIDERS` array in the `app.module.ts` file (path: `./src/app/app.module.ts`):
+
+```typescript
+// ...
+
+// Application wide providers
+const APP_PROVIDERS = [
+  ...APP_RESOLVER_PROVIDERS,
+  AppState,
+  CookieService
+];
+
+// ...
 ```
 
 

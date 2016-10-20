@@ -3,11 +3,25 @@
     "module": "commonjs",
     "target": "es5",
     "noImplicitAny": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": ["es6", "es2015", "dom"],
     "outDir": "dist/",
     "rootDir": ".",
     "sourceMap": true,
-    "removeComments": false
+    "removeComments": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules"
+    ],
+    "types": [
+      "node",
+      "express",
+      "jasmine",
+      "protractor",
+      "systemjs"
+    ]
   },
   "exclude": [
     "node_modules",

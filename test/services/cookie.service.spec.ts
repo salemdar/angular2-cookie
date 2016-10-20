@@ -1,12 +1,14 @@
 import { ReflectiveInjector } from '@angular/core';
 import { CookieService } from '../../src/services/cookies.service';
 import { ANGULAR2_COOKIE_PROVIDERS } from '../../src/core';
+import { TestBed } from '@angular/core/testing';
 
 export function main() {
   describe('CookieService', () => {
     let cookieService: CookieService;
 
     beforeEach(() => {
+      TestBed.configureTestingModule({providers: [CookieService]});
       let injector = ReflectiveInjector.resolveAndCreate(ANGULAR2_COOKIE_PROVIDERS);
       cookieService = injector.get(CookieService);
       cookieService.removeAll();
@@ -91,6 +93,10 @@ export function main() {
       cookieService.removeAll();
       expect(cookieService.getAll()).toEqual({});
     });
+
+    it('should return undefined for nonexisting cookies',() => {
+      expect(cookieService.get('nonexistingCookie')).toBeUndefined();
+    })
 
   });
 }

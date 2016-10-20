@@ -38,8 +38,6 @@ module.exports = function (config) {
 
       { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
 
-      { pattern: 'karma-test-shim.js', included: true, watched: true },
-
       // paths loaded via module imports
       { pattern: 'dist/**/*.js', included: false, watched: true },
       { pattern: 'test-built/**/*.js', included: false, watched: true },
@@ -51,12 +49,14 @@ module.exports = function (config) {
 
       // paths to support debugging with source maps in dev tools
       { pattern: 'dist/**/*.ts', included: false, watched: false },
-      { pattern: 'dist/**/*.js.map', included: false, watched: false }
+      { pattern: 'dist/**/*.js.map', included: false, watched: false },
+
+      { pattern: 'karma-test-shim.js', included: true, watched: true },
     ],
 
     // proxied base paths
     proxies: {
-      // required for component assests fetched by Angular's compiler
+      // required for component assets fetched by Angular's compiler
       '/dist/': '/base/dist/',
       '/base/src/': '/base/dist/',
       '/base/test-built/src': '/base/dist'
