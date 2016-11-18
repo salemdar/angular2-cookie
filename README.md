@@ -130,6 +130,34 @@ export class AppComponent {
 }
 ```
 
+### <a name="examples"></a> Universal Support
+
+This module supports angular universal through angular service overrides, make sure you add something like 
+the following to your backend module instead of adding the CookieService provider
+
+```typescript
+import { NgModule }      from '@angular/core';
+import { UniversalModule } from 'angular2-universal';
+
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieBackendService } from 'angular2-cookie/services/cookies.backend.service';
+
+import { AppComponent }  from './app.component';
+
+@NgModule({
+  imports: [ UniversalModule ],
+  declarations: [ AppComponent ],
+  providers: [
+  	{
+      provide: CookieService,
+      useClass: CookieBackendService
+    }
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
+
 ### <a name="examples"></a> Examples
 
 Here you can find some usage examples with popular boilerplate libraries.
