@@ -5,6 +5,13 @@ import {CookieOptionsArgs} from './cookie-options-args.model';
 
 @Injectable()
 export class CookieService {
+  protected get cookieString(): string {
+    return document.cookie || '';
+  }
+  protected set cookieString(val: string) {
+    document.cookie = val;
+  }
+
   constructor(@Optional() private _defaultOptions?: CookieOptions) {}
 
   /**
@@ -101,13 +108,12 @@ export class CookieService {
   }
 
   private _cookieReader(): Object {
-    let rawDocument = document;
     let lastCookies = {};
     let lastCookieString = '';
     let that = this;
 
     let cookieArray: string[], cookie: string, i: number, index: number, name: string;
-    let currentCookieString = rawDocument.cookie || '';
+    let currentCookieString = this.cookieString;
     if (currentCookieString !== lastCookieString) {
       lastCookieString = currentCookieString;
       cookieArray = lastCookieString.split('; ');
@@ -131,10 +137,9 @@ export class CookieService {
 
   private _cookieWriter() {
     let that = this;
-    let rawDocument = document;
 
     return function(name: string, value: string, options?: CookieOptionsArgs) {
-      rawDocument.cookie = that._buildCookieString(name, value, options);
+      that.cookieString = that._buildCookieString(name, value, options);
     };
   }
 
