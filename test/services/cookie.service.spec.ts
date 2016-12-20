@@ -1,7 +1,10 @@
 import { ReflectiveInjector } from '@angular/core';
-import { CookieService } from '../../src/services/cookies.service';
-import { ANGULAR2_COOKIE_PROVIDERS } from '../../src/core';
 import { TestBed } from '@angular/core/testing';
+
+import { ANGULAR2_COOKIE_PROVIDERS } from '../../src/core';
+
+import { CookieService } from '../../src/services/cookies.service';
+import { CookieOptionsArgs } from '../../src/services/cookie-options-args.model';
 
 export function main() {
   describe('CookieService', () => {
@@ -94,11 +97,19 @@ export function main() {
       expect(cookieService.getAll()).toEqual({});
     });
 
-    it('should return undefined for nonexisting cookies',() => {
+    it('should return undefined for nonexisting cookies', () => {
       expect(cookieService.get('nonexistingCookie')).toBeUndefined();
-    })
+    });
 
-
+    it('should change the settings', () => {
+      let key = 'testCookieKey';
+      let value = 'testCookieValue';
+      let opts: CookieOptionsArgs = {
+        expires: new Date('2030-07-19')
+      };
+      cookieService.put(key, value, opts);
+      expect(cookieService.get(key)).toBe(value);
+    });
 
   });
 }
