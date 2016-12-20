@@ -10,3 +10,5 @@ src/**/*.map
 test-built
 typings
 .idea
+yarn.lock
+yarn-error.log
