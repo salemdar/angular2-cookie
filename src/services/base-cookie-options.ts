@@ -1,5 +1,5 @@
 import {APP_BASE_HREF} from '@angular/common';
-import {Inject, Injectable, Injector, Optional} from '@angular/core';
+import {Inject, Injectable, Optional} from '@angular/core';
 import {CookieOptionsArgs} from './cookie-options-args.model';
 
 /** @private */

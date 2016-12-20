@@ -1,6 +1,6 @@
-# angular2-cookie  [![Build Status](https://travis-ci.org/salemdar/angular2-cookie.svg?branch=1.2.5)](https://travis-ci.org/salemdar/angular2-cookie) [![npm version](https://badge.fury.io/js/angular2-cookie.svg)](http://badge.fury.io/js/angular2-cookie) [![Downloads](http://img.shields.io/npm/dm/angular2-cookie.svg)](https://npmjs.org/package/angular2-cookie)
+# angular2-cookie  [![Build Status](https://travis-ci.org/salemdar/angular2-cookie.svg?branch=1.2.6)](https://travis-ci.org/salemdar/angular2-cookie) [![npm version](https://badge.fury.io/js/angular2-cookie.svg)](http://badge.fury.io/js/angular2-cookie) [![Downloads](http://img.shields.io/npm/dm/angular2-cookie.svg)](https://npmjs.org/package/angular2-cookie)
 
-> Implementation of Angular 1.x $cookies service to Angular 2 **v1.2.5**
+> Implementation of Angular 1.x $cookies service to Angular 2 **v1.2.6**
 
 _Please use >=1.2.4 for Angular >2.0.0, 1.1.x versions for beta, 1.2.2 version is for release candidates earlier than rc.5 and 1.2.3 is for >rc.5._
 
