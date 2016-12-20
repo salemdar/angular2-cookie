@@ -4,7 +4,7 @@ import {CookieOptions} from './base-cookie-options';
 import {CookieOptionsArgs} from './cookie-options-args.model';
 
 @Injectable()
-export class CookieService {
+export class CookieService implements ICookieService {
   constructor(@Optional() private _defaultOptions?: CookieOptions) {}
 
   /**
@@ -199,4 +199,14 @@ export class CookieService {
   private isString(obj: any): obj is string {
     return typeof obj === 'string';
   }
+}
+
+export interface ICookieService {
+	get(key: string): string;
+	getObject(key: string): Object;
+	getAll(): Object;
+	put(key: string, value: string, options?: CookieOptionsArgs): void;
+	putObject(key: string, value: Object, options?: CookieOptionsArgs): void;
+	remove(key: string, options?: CookieOptionsArgs): void;
+	removeAll(): void;
 }
