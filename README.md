@@ -292,7 +292,7 @@ const packages: any = {
 };
 ```
 
-#### <a name="cli"></a> Angular2 Webpack Starter
+#### <a name="cli"></a>Angular2 Webpack Starter
 
 An Angular 2 Starter kit featuring Angular 2 and Webpack 2 by @AngularClass
 _(Link: [https://github.com/AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter))_
