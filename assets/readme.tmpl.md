@@ -8,6 +8,7 @@ _Please use >=1.2.4 for Angular >2.0.0, 1.1.x versions for beta, 1.2.2 version i
 - [Get Started](#get-started)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [AngularUniversal](#universal)
   - [Examples](#examples)
     - [Angular2-quickstart](#quickstart)
     - [Angular2-seed](#seed)
@@ -128,6 +129,34 @@ export class AppComponent {
     return this._cookieService.get(key);
   }
 }
+```
+
+### <a name="universal"></a> Universal Support
+
+This module supports angular universal through angular service overrides, make sure you add something like
+the following to your backend module instead of adding the CookieService provider
+
+```typescript
+import { NgModule }      from '@angular/core';
+import { UniversalModule } from 'angular2-universal';
+
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieBackendService } from 'angular2-cookie/services/cookies.backend.service';
+
+import { AppComponent }  from './app.component';
+
+@NgModule({
+  imports: [ UniversalModule ],
+  declarations: [ AppComponent ],
+  providers: [
+  	{
+      provide: CookieService,
+      useClass: CookieBackendService
+    }
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
 ```
 
 ### <a name="examples"></a> Examples

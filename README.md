@@ -132,7 +132,7 @@ export class AppComponent {
 
 ### <a name="examples"></a> Universal Support
 
-This module supports angular universal through angular service overrides, make sure you add something like 
+This module supports angular universal through angular service overrides, make sure you add something like
 the following to your backend module instead of adding the CookieService provider
 
 ```typescript

@@ -5,7 +5,6 @@ import {CookieOptionsArgs} from './cookie-options-args.model';
 
 @Injectable()
 export class CookieService implements ICookieService {
-
   protected get cookieString(): string {
     return document.cookie || '';
   }
@@ -209,11 +208,11 @@ export class CookieService implements ICookieService {
 }
 
 export interface ICookieService {
-	get(key: string): string;
-	getObject(key: string): Object;
-	getAll(): Object;
-	put(key: string, value: string, options?: CookieOptionsArgs): void;
-	putObject(key: string, value: Object, options?: CookieOptionsArgs): void;
-	remove(key: string, options?: CookieOptionsArgs): void;
-	removeAll(): void;
+  get(key: string): string;
+  getObject(key: string): Object;
+  getAll(): Object;
+  put(key: string, value: string, options?: CookieOptionsArgs): void;
+  putObject(key: string, value: Object, options?: CookieOptionsArgs): void;
+  remove(key: string, options?: CookieOptionsArgs): void;
+  removeAll(): void;
 }
