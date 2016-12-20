@@ -12,7 +12,7 @@ _Please use >=1.2.4 for Angular >2.0.0, 1.1.x versions for beta, 1.2.2 version i
     - [Angular2-quickstart](#quickstart)
     - [Angular2-seed](#seed)
     - [Angular-cli](#cli)
-    - [Angular2 Webpack Starter](#angular2-webpack-starter)
+    - [Angular2 Webpack Starter](#webstarterpack)
 - [CookieService](#cookieservice)
   - [get()](#get)
   - [getObject()](#getobject)
@@ -292,7 +292,7 @@ const packages: any = {
 };
 ```
 
-#### <a name="cli"></a> Angular2 Webpack Starter
+#### <a name="webstarterpack"></a> Angular2 Webpack Starter
 
 An Angular 2 Starter kit featuring Angular 2 and Webpack 2 by @AngularClass
 _(Link: [https://github.com/AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter))_
