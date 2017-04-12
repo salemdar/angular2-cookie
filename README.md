@@ -1,4 +1,6 @@
-# angular2-cookie  [![Build Status](https://travis-ci.org/salemdar/angular2-cookie.svg?branch=1.2.6)](https://travis-ci.org/salemdar/angular2-cookie) [![npm version](https://badge.fury.io/js/angular2-cookie.svg)](http://badge.fury.io/js/angular2-cookie) [![Downloads](http://img.shields.io/npm/dm/angular2-cookie.svg)](https://npmjs.org/package/angular2-cookie)
+# ~angular2-cookie~ _DEPRECATED_ => [ngx-cookie](https://github.com/salemdar/ngx-cookie) [![Build Status](https://travis-ci.org/salemdar/angular2-cookie.svg?branch=1.2.6)](https://travis-ci.org/salemdar/angular2-cookie) [![npm version](https://badge.fury.io/js/angular2-cookie.svg)](http://badge.fury.io/js/angular2-cookie) [![Downloads](http://img.shields.io/npm/dm/angular2-cookie.svg)](https://npmjs.org/package/angular2-cookie)
+
+## This library is deprecated and please use [ngx-cookie](https://github.com/salemdar/ngx-cookie) instead. ##
 
 > Implementation of Angular 1.x $cookies service to Angular 2 **v1.2.6**
 
